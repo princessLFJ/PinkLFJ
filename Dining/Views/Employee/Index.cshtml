@@ -1,0 +1,56 @@
+﻿@model IEnumerable<Dining.Models.employee>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Share/_LayoutLogin.cshtml";
+}
+<style>
+    .table {
+        position: absolute;
+        top: 180px;
+        left: 300px;
+        color: #FFF;
+        width: 1000px;
+    }
+</style>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ename)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.eage)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.esalary)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.eimg)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ename)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.eage)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.esalary)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.eimg)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit","Employee", new { id = item.eid }, new { }) |
+                    @Html.ActionLink("Details", "Details", "Employee", new { id = item.eid }, new { }) |
+                    @Html.ActionLink("Delete", "Delete", "Employee", new { id = item.eid }, new { })
+                </td>
+            </tr>
+        }
+
+    </table>

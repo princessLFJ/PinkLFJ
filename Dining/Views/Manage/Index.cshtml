@@ -1,0 +1,51 @@
+﻿@model IEnumerable<Dining.Models.menu>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Share/_LayoutLogin.cshtml";
+}
+<style>
+    .table {
+        position: absolute;
+        top: 180px;
+        left: 300px;
+        color: #FFF;
+        width: 1000px;
+    }
+</style>
+<div>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.mname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.mprice)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.mtype)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.mname)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.mprice)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.mtype)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", "Manage", new { id = @item.mid }, new { }) |
+                    @Html.ActionLink("Add", "Add","Manage", new { id = @item.mid }, new { }) |
+                    @Html.ActionLink("Delete", "Delete","Manage",new { id = @item.mid }, new { })
+                </td>
+            </tr>
+        }
+    </table>
+</div>

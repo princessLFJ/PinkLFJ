@@ -1,0 +1,43 @@
+﻿@model IEnumerable<Dining.Models.Manage>
+
+@{
+    ViewBag.Title = "LoginIndex";
+    Layout = "~/Views/Share/_LayoutLogin.cshtml";
+}
+<style>
+    .table{
+        position:absolute;
+        top:180px;
+        left:300px;
+        color:#FFF;
+        width:1000px;
+    }
+</style>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.pwd)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.pwd)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit","User", new { id = @item.id } , new {}) |
+            @Html.ActionLink("Add", "Add", "User", new { id=item.id }, new { }) |
+            @Html.ActionLink("Delete", "Delete", "User", new { id=item.id }, new { })
+        </td>
+    </tr>
+}
+
+</table>
